@@ -1,16 +1,18 @@
 ;
 ; CIS 343, Winter 2021, Project 7 - Functions in Common LISP
 ;
-; Student Name(s): 
+; Student Name(s): Ummayair Ahmad, Kyle Jacobson
 ;
 
 (defun my-gcd (a b)
-    
+	(if (zerop b) (abs a)
+		(gcd b (mod a b)))
 )
 
 
 (defun is-palindrome (l)
-
+	(cond ((null l) NIL)
+		((equal l (reverse l))))
 )
 
 
