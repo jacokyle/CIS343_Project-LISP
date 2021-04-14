@@ -17,7 +17,9 @@
 
 
 (defun intlist (n)
-
+	(reverse(loop for i to n 
+		unless (= i 0)
+			collect i))
 )
 
 
