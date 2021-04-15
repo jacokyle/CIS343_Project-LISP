@@ -24,17 +24,23 @@
 
 
 (defun analyze (l)
-
+	(if l 
+		(cons (if (atom (car l)) 'atom 'list)
+     		(analyze (cdr l))))
 )
 
 
 (defun only-atoms (l)
-
+	(and l
+		(if (not (null (atom (first l))))
+        	'atom)
+       	(or (null (rest l))
+           	(only-atoms (rest l))))
 )
 
 
 (defun only-atoms-iter (l)
-
+	
 )
 
 
