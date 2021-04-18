@@ -17,7 +17,7 @@
 
 
 (defun intlist (n)
-	(reverse(loop for i to n 
+	(reverse (loop for i to n 
 		unless (= i 0)
 			collect i))
 )
@@ -32,7 +32,7 @@
 
 (defun only-atoms (l)
 	(and l
-		(if (not (null (atom (first l))))
+		(if (not (null (atom (car l))))
         	'atom)
        	(or (null (rest l))
            	(only-atoms (rest l))))
@@ -40,27 +40,39 @@
 
 
 (defun only-atoms-iter (l)
-	
+	(setq x T)
+	(if (null l) (setq x NIL)
+		(loop for i on l
+			do (if (listp (car i)) (setq x NIL))))
+		x
 )
 
 
 (defun quad-roots (a b c)
-
+	(list
+   		(/ (+ (- b) (sqrt (- (expt b 2) (* 4 a c)))) (* 2 a))
+   		(/ (- (- b) (sqrt (- (expt b 2) (* 4 a c)))) (* 2 a)))
 )
 
 
 (defun rotate-from-right (l n)
-
+	(if (< n 1) l
+    	(rotate-from-right (butlast (cons (car (last l)) l)) (- n 1)))
 )
 
 
 (defun odds (l)
-
+	(cond
+    	((null l) nil) 
+    		(t (cons (car l) (odds (cdr (cdr l))))))
 )
 
 
 (defun odds-iter (l)
-
+	(loop for i in l 
+		for index from 1  
+    		if (oddp index)  
+    			collect i)
 )
 
 
